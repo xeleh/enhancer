@@ -28,8 +28,9 @@ static void Group() {
 	}
 	int siblingIndex = top.GetSiblingIndex();
 	// create the group root gameobject
-	GameObject groupRoot = new GameObject("Group");
-	string undoText = "Group";
+	const string newGroupName = "Group";
+	GameObject groupRoot = new GameObject(newGroupName);
+	const string undoText = "Group";
 	Undo.RegisterCreatedObjectUndo(groupRoot, undoText);
 	Selection.transforms[0].GetSiblingIndex();
 	Undo.SetTransformParent(groupRoot.transform, top.parent, undoText);
@@ -38,11 +39,10 @@ static void Group() {
 	foreach (Transform t in Selection.transforms) {
 		averagePoint += t.position;
 	}
-	averagePoint = averagePoint / Selection.transforms.Length;
+	averagePoint /= Selection.transforms.Length;
 	groupRoot.transform.position = averagePoint;
 	// re-parent transforms in selection
 	foreach (Transform t in Selection.transforms) {
-		Debug.Log(t.name);
 		Undo.SetTransformParent(t, groupRoot.transform, undoText);
 	}
 	groupRoot.transform.SetSiblingIndex(siblingIndex);
