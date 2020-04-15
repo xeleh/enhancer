@@ -14,6 +14,7 @@ public static string path = $"Packages/{name}";
 
 static Package() {
 	InitSettingsProvider();
+	ThemeManager.OnLoad();
 	Sidebar.OnLoad();
 }
 

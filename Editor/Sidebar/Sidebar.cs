@@ -178,7 +178,7 @@ static Color itemColor;
 static Color activeItemColor;
 
 void PrepareGUI() {
-	darkTheme = Host.darkEnabled;
+	darkTheme = Host.darkEnabled || ThemeManager.darkEnabled;
 	itemColor = darkTheme ? new Color(1, 1, 1, 0.32f) : new Color(0, 0, 0, 0.18f);
 	activeItemColor = darkTheme ? new Color(1, 1, 1, 0.75f) : new Color(0, 0, 0, 0.6f);
 }

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UObject = UnityEngine.Object;
@@ -12,12 +13,23 @@ public static string projectPath = Directory.GetCurrentDirectory();
 public static string settingsPath = projectPath + "/ProjectSettings";
 public static string assetsPath = Application.dataPath;
 public static bool darkEnabled => EditorGUIUtility.isProSkin;
+public static Version version = GetCurrentVersion();
 
 public static object mainView => WindowLayoutR.FindMainView();
 public static EditorWindow[] windows => Resources.FindObjectsOfTypeAll<EditorWindow>();
 public static Rect position => ViewR.Wrap(WindowLayoutR.FindMainView()).screenPosition;
 
 public static event Action reflowEvent;
+
+static Version GetCurrentVersion() {
+	string s = Application.unityVersion;
+	s = Regex.Replace(s, "[Aa|Bb|Ff|Pp][0-9]+", "");
+	string[] parts = s.Split("."[0]);
+	int major = Convert.ToInt32(parts[0]);
+	int minor = Convert.ToInt32(parts[1]);
+	int fix = Convert.ToInt32(parts[2]);
+	return new Version(major, minor, fix);
+}
 
 public static EditorWindow GetWindow(Type type) {
 	UObject[] windows = Resources.FindObjectsOfTypeAll(type);
