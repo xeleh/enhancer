@@ -140,11 +140,11 @@ public override void OnChange() {
 	Sidebar sidebar = Host.GetWindow<Sidebar>();
 	if (sidebar != null) {
 		if (!enabled) {
-			sidebar.Close();
+			Sidebar.Hide();
 			return;
 		}
 		if (dockingSide != Sidebar.dockingSide) {
-			sidebar.Close();
+			Sidebar.Hide();
 			Sidebar.Toggle();
 			return;
 		}
