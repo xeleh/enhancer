@@ -10,7 +10,9 @@ internal static partial class Extensions {
 class EditorWindowR : EditorType {
 
 static Type type = typeof(EditorWindow);
+#if !UNITY_2020_1_OR_NEWER
 public static PropertyInfo dockedProperty = type.GetNonPublicProperty("docked");
+#endif
 public static FieldInfo parentField = type.GetNonPublicField("m_Parent");
 
 }
@@ -20,7 +22,11 @@ public static object GetParent(this EditorWindow window) {
 }
 
 public static bool IsDocked(this EditorWindow window) {
+	#if !UNITY_2020_1_OR_NEWER
 	return (bool)EditorWindowR.dockedProperty?.GetValue(window);
+	#else
+	return window.docked;
+	#endif
 }
 
 public static Rect GetPosition(this EditorWindow window) {

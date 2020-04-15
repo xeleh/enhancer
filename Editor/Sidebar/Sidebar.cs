@@ -37,7 +37,7 @@ public static void Hide() {
 	}
 }
 
-const float SIDEBAR_WIDTH = 40;
+const float SIDEBAR_WIDTH = 38;
 
 static Sidebar Create() {
 	Rect rect = new Rect(0, 0, SIDEBAR_WIDTH, 64);
@@ -47,7 +47,7 @@ static Sidebar Create() {
 	minSize.y = 0;
 	instance.minSize = minSize;
 	Vector2 maxSize = instance.maxSize;
-	maxSize.x = 40;
+	maxSize.x = SIDEBAR_WIDTH;
 	instance.maxSize = maxSize;
 	instance.Dock();
 	return instance;
@@ -172,7 +172,7 @@ void OnGUI() {
 }
 
 const float iconSize = 32;
-const float minMargin = 4;
+const float minMargin = 3;
 static bool darkTheme;
 static Color itemColor;
 static Color activeItemColor;
