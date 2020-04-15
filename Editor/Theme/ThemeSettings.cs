@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using XT.Base;
 
 namespace XT.Enhancer {
@@ -9,9 +10,13 @@ internal class ThemeSettings : PartSettings {
 [Setting("Enable Dark Theme")]
 public bool darkEnabled = false;
 
+public override void Reset() {
+	OnChange();
+}
+
 public override void OnChange() {
 	if (darkEnabled != ThemeManager.darkEnabled) {
-		ThemeManager.SetTheme();
+		EditorApplication.delayCall += () => { ThemeManager.SetTheme(); };
 	}
 }
 
