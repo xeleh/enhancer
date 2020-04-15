@@ -99,10 +99,18 @@ void DrawItem(Rect rect, int index, bool isActive, bool isFocused) {
 	}
 	iconRect.x += 3;
 	iconRect.y += 3;
-	bool clicked = Sidebar.DrawIcon(iconRect, item.icon);
-	if (clicked && item.function != SidebarItem.Function.Separator) {
-		PaneGUI.FocusListElementAt(index);
-		EditorGUIUtility.ShowObjectPicker<Texture2D>(item.icon, false, "", index);
+	switch (item.function) {
+	case SidebarItem.Function.SetLayout:
+	case SidebarItem.Function.ExecuteMenuItem:
+		bool clicked = Sidebar.DrawIcon(iconRect, item.icon);
+		if (clicked) {
+			PaneGUI.FocusListElementAt(index);
+			EditorGUIUtility.ShowObjectPicker<Texture2D>(item.icon, false, "", index);
+		}
+		break;
+	case SidebarItem.Function.Separator:
+		Sidebar.DrawSeparator(iconRect, item.icon);
+		break;
 	}
 	// command field
 	rect.x += iconSize + 10;

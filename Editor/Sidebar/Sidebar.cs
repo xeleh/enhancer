@@ -240,7 +240,7 @@ internal static bool DrawIcon(Rect rect, Texture2D icon, bool active = false) {
 	return clicked;
 }
 
-static void DrawSeparator(Rect rect, Texture2D icon) {
+internal static void DrawSeparator(Rect rect, Texture2D icon) {
 	Color contentColor = GUI.contentColor;
 	GUI.contentColor = itemColor * (darkTheme ? 1.0f : 0.8f);
 	GUI.Label(rect, icon, Resources.separatorStyle);
