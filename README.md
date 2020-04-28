@@ -1,5 +1,5 @@
 # Editor Enhancer
-A collection of extensions to enhance the Unity Editor. See the [roadmap](#roadmap) section for more information on what is coming next.
+The Editor Enhancer package is a collection of utilities aimed to enhance the Unity Editor. See the [roadmap](#roadmap) section for more information on what is coming next.
 
 ### Requirements
 
@@ -7,7 +7,7 @@ Unity 2019.3.0 or newer.
 
 ### Installation
 
-Open the Package Manager window and follow the instructions to [install a package from a Git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html). This is the URL you need to enter:
+Open the Package Manager window and follow the [instructions to install a package from a Git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html). This is the URL you need to enter:
 
 ```
 https://github.com/xeleh/enhancer.git
@@ -20,7 +20,7 @@ This is an option in Project Settings > Editor Enhancer to replace the personal 
 
 ![](https://xeleh.com/media/dark-theme.gif)
 
-This has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning no binary patches involved or something like that. You can check the source code to see how it works.
+This feature has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning **no binary patching** or something like that. You can check the source code to see how it works.
 
 ## Sidebar
 
@@ -34,7 +34,7 @@ The Sidebar is a configurable utility window that will keep docked on the left o
 
 You can fully configure the items and the rest of options of the Sidebar in the Project Settings > Editor Enhancer pane. This is a quick explanation of the less obvious options:
 
-* **Save Layout On Change**: When enabled your current window layout will be saved before changing to another layout by clicking another Sidebar 'Set Layout' item. This is a nice convenience because "as is" Unity does not save a modified layout automatically but requires you to explicitly use the Save Layout option in the Layout menu.|
+* **Save Layout On Change**: When enabled your current window layout will be saved before changing to another layout by clicking another Sidebar 'Set Layout' item. This is a nice convenience because "as is" Unity does not save a modified layout automatically but requires you to explicitly use the Save Layout option in the Layout menu.
 * **Play Mode Layout**: You can specify here the layout you want to use during Play mode and the Sidebar will manage the change automatically. Try it.
 
 
@@ -44,8 +44,8 @@ Just some simple but convenient menu scripts that I use frequently in my project
 
 | Menu Item | Key | Purpose |
 |---|---|---|
-| Assets/Duplicate | Ctrl+G ⌘+G |Duplicate the selected asset. I know we can do this already with the Edit/Duplicate option, but this is more convenient because the Duplicate option will be now available in the asset context menu as well. |
-| GameObject/Group | Ctrl+D ⌘+D |Creates a new GameObject "Group" containing the current selection of GameObjects. The group will take the place of the last top-level GameObject in the selection. |
+| Assets/Duplicate | Ctrl+D ⌘+D |Duplicate the selected asset. I know we can do this already with the Edit/Duplicate option, but this is more convenient because the Duplicate option will be now available in the asset context menu as well. |
+| GameObject/Group | Ctrl+G ⌘+G |Creates a new GameObject "Group" containing the current selection of GameObjects. The group will take the place of the last top-level GameObject in the selection. |
 
 ## Roadmap
 
