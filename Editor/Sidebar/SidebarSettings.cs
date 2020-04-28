@@ -102,6 +102,7 @@ void DrawItem(Rect rect, int index, bool isActive, bool isFocused) {
 	switch (item.function) {
 	case SidebarItem.Function.SetLayout:
 	case SidebarItem.Function.ExecuteMenuItem:
+		Sidebar.PrepareGUI();
 		bool clicked = Sidebar.DrawIcon(iconRect, item.icon);
 		if (clicked) {
 			PaneGUI.FocusListElementAt(index);
@@ -109,6 +110,7 @@ void DrawItem(Rect rect, int index, bool isActive, bool isFocused) {
 		}
 		break;
 	case SidebarItem.Function.Separator:
+		Sidebar.PrepareGUI();
 		Sidebar.DrawSeparator(iconRect, item.icon);
 		break;
 	}
