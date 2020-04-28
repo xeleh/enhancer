@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEditor;
@@ -29,6 +30,18 @@ static Version GetCurrentVersion() {
 	int minor = Convert.ToInt32(parts[1]);
 	int fix = Convert.ToInt32(parts[2]);
 	return new Version(major, minor, fix);
+}
+
+public static Color GetPlayModeTintColor() {
+	string s = EditorPrefs.GetString("Playmode tint", "");
+	s = s.Replace("Playmode tint;", "").Replace(",", ".");
+	string[] comp = s.Split(';');
+	IFormatProvider format = CultureInfo.InvariantCulture.NumberFormat;
+	float r = float.Parse(comp[0], NumberStyles.Float, format);
+	float g = float.Parse(comp[1], NumberStyles.Float, format);
+	float b = float.Parse(comp[2], NumberStyles.Float, format);
+	float a = float.Parse(comp[3], NumberStyles.Float, format);
+	return new Color(r, g, b, a);
 }
 
 public static EditorWindow GetWindow(Type type) {

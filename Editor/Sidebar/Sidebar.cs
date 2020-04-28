@@ -176,6 +176,7 @@ const float minMargin = 3;
 static bool darkTheme;
 static Color itemColor;
 static Color activeItemColor;
+static Color playModeTint;
 
 internal static void PrepareGUI() {
 	darkTheme = Host.darkEnabled || ThemeManager.darkEnabled;
@@ -189,6 +190,12 @@ void DrawBackground() {
 	r.height += 2;
 	Color backColor = GUI.color;
 	GUI.color = settings.backColor;
+	if (EditorApplication.isPlayingOrWillChangePlaymode) {
+		if (playModeTint.a == 0) {
+			playModeTint = Host.GetPlayModeTintColor();
+		}
+		GUI.color *= playModeTint;
+	}
 	GUI.Label(r, "", EditorResources.dockHeaderStyle);
 	GUI.color = backColor;
 }
