@@ -3,7 +3,7 @@
   "resolvedPath": "",
   "name": "com.xeleh.enhancer",
   "displayName": "Editor Enhancer",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "unity": "2019.3",
   "description": "A collection of extensions to enhance the Unity Editor",
   "keywords": [

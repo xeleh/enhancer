@@ -3,9 +3,9 @@ A collection of extensions to enhance the Unity Editor. See the [roadmap](#roadm
 
 ## Dark Theme
 
-This is an option in Project Settings > Editor Enhancer to replace the personal Editor theme with the "Pro Editor UI theme" which is only available in [Unity Plus and Pro plans](https://store.unity.com/#plans-business). Unity defines this theme as a "Beautiful, easy on the eyes, dark UI environment". So yes, having this for free is good.
+This is an option in Project Settings > Editor Enhancer to replace the personal Editor theme with the "Pro Editor UI theme" which is only available in [Unity Plus and Pro plans](https://store.unity.com/#plans-business). Unity defines this theme as a "Beautiful, easy on the eyes, dark UI environment". So yes, having this is pretty good.
 
-This has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning no binary patches involved or something like that. You can check the source code to see how it works. 
+This has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning no binary patches involved or something like that. You can check the source code to see how it works.
 
 ## Sidebar
 
@@ -34,9 +34,15 @@ Just some simple but convenient menu scripts that I use frequently in my project
 
 ## Roadmap
 
-...
+* Double Click manager.
+* Enter/Exit play mode actions.
+* Overlay toolbars?
+* Dockable Build Window?
+* Customizable Toolbar?
+* Notes?
+* Notification Centre?
 
 ## Acknowledgements
 
-Thanks to TheZombieKiller, Peter77, Grimreaper358 and everyone who contributed with code and ideas to the [Editor skinning thread](https://forum.unity.com/threads/editor-skinning-thread.711059/) in the Unity forums. You gave the hints and inspired me to complete the work.
+Thanks to TheZombieKiller, Peter77, Grimreaper358, Kamyker and everyone who contributed with code and ideas to the [Editor skinning thread](https://forum.unity.com/threads/editor-skinning-thread.711059/) in the Unity forums. You gave the hints and inspired me to complete the work.
 
