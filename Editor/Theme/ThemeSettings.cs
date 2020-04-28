@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEditor;
+using UnityEngine;
 using XT.Base;
 
 namespace XT.Enhancer {
@@ -10,8 +11,11 @@ internal class ThemeSettings : PartSettings {
 [Setting("Enable Dark Theme")]
 public bool darkEnabled = false;
 
-public override void Reset() {
-	OnChange();
+public override void OnGUI(Setting setting) {
+	bool guiEnabled = GUI.enabled;
+	GUI.enabled = !Application.isPlaying;
+	base.OnGUI(setting);
+	GUI.enabled = guiEnabled;
 }
 
 public override void OnChange() {
