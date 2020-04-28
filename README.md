@@ -1,9 +1,24 @@
 # Editor Enhancer
 A collection of extensions to enhance the Unity Editor. See the [roadmap](#roadmap) section for more information on what is coming next.
 
+### Requirements
+
+Unity 2019.3.0 or newer.  
+
+### Installation
+
+Open the Package Manager window and follow the instructions to [install a package from a Git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html). This is the URL you need to enter:
+
+```
+https://github.com/xeleh/enhancer.git
+```
+
+
 ## Dark Theme
 
 This is an option in Project Settings > Editor Enhancer to replace the personal Editor theme with the "Pro Editor UI theme" which is only available in [Unity Plus and Pro plans](https://store.unity.com/#plans-business). Unity defines this theme as a "Beautiful, easy on the eyes, dark UI environment". So yes, having this is pretty good.
+
+![](https://xeleh.com/media/dark-theme.gif)
 
 This has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning no binary patches involved or something like that. You can check the source code to see how it works.
 
