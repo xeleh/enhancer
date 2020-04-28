@@ -37,6 +37,7 @@ protected override void OnReset() {
 		if (typeof(PartSettings).IsAssignableFrom(setting.type)) {
 			PartSettings partSettings = (PartSettings)setting.field.GetValue(setting.obj);
 			partSettings.Reset();
+			partSettings.OnChange();
 		}
 	}
 }

@@ -15,29 +15,37 @@ string assetPath;
 Dictionary<string, Setting> dict = new Dictionary<string, Setting>();
 
 internal static T GetInstance<T>(string assetPath) where T : ProjectSettings {
+	// not happy with this cleanup, there must be a better way
+	T[] zombies = Resources.FindObjectsOfTypeAll<T>();
+	foreach (var zombie in zombies) {
+		zombie.DestroyImmediate();
+	}
+	// load the .asset file
 	UObject[] objects = InternalEditorUtility.LoadSerializedFileAndForget(assetPath);
-	bool create = objects == null || objects.Length == 0 || objects[0] == null;
-	if (create) {
-		objects = new UObject[] { ScriptableObject.CreateInstance<T>() };
-		Directory.CreateDirectory(Path.GetDirectoryName(assetPath));
-		InternalEditorUtility.SaveToSerializedFileAndForget(objects, assetPath, true);
-		AssetDatabase.Refresh();
+	bool notLoaded = objects == null || objects.Length == 0 || objects[0] == null;
+	if (notLoaded) {
+		// ok, then create it
+		objects = SaveAsset<T>(ScriptableObject.CreateInstance<T>(), assetPath);
 		if (objects == null || objects.Length == 0) {
 			return null;
 		}
 	}
+	// setup the instance
 	T instance = objects[0] as T;
 	if (instance != null) {
 		instance.assetPath = assetPath;
-		instance.Setup();
+		instance.hideFlags = HideFlags.HideAndDontSave; 
+		instance.dict = SettingParser.Parse(typeof(T), instance);
+		instance.settings = instance.dict.Values.ToArray();
 	}
 	return instance;
 }
 
-void Setup() {
-	hideFlags = HideFlags.HideAndDontSave; 
-	dict = SettingParser.Parse(GetType(), this);
-	settings = dict.Values.ToArray();
+static UObject[] SaveAsset<T>(T instance, string assetPath) where T : ProjectSettings {
+	UObject[] objects = new UObject[] { instance };
+	Directory.CreateDirectory(Path.GetDirectoryName(assetPath));
+	InternalEditorUtility.SaveToSerializedFileAndForget(objects, assetPath, true);
+	return objects;
 }
 
 Setting[] IHasSettings.GetSettings() {
@@ -59,14 +67,13 @@ void IHasSettings.Load() {
 }
 
 void IHasSettings.Save() {
-	UObject[] objects = new UObject[] { this };
-	Directory.CreateDirectory(Path.GetDirectoryName(assetPath));
-	InternalEditorUtility.SaveToSerializedFileAndForget(objects, assetPath, true);
+	SaveAsset(this, assetPath);
 }
 
 void IHasSettings.Reset() {
 	ProjectSettings instance = ScriptableObject.CreateInstance(GetType()) as ProjectSettings;
 	EditorUtility.CopySerialized(instance, this);
+	instance.DestroyImmediate();
 	this.Save();
 }
 

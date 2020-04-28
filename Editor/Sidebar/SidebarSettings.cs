@@ -22,7 +22,7 @@ public Color backColor = Color.white;
 public int verticalPadding = 8;
 
 [Setting("Items")]
-public List<SidebarItem> items;
+public List<SidebarItem> items = new List<SidebarItem>();
 
 [Setting("Play Mode Layout")]
 public string playModeLayout;
@@ -155,11 +155,6 @@ public override void OnChange() {
 	if (enabled) {
 		Sidebar.Toggle();
 	}
-}
-
-public override void Reset() {
-	items = new List<SidebarItem>( new SidebarItem[] { SidebarItem.CreateDefault() });
-	OnChange();
 }
 
 static string[] layouts;
