@@ -22,6 +22,11 @@ This is an option in Project Settings > Editor Enhancer to replace the personal 
 
 This feature has been tested with all Unity 2019.3.x versions and the latest Unity 2020.1 betas. It is a 100% legal hack, meaning **no binary patching** or something like that. You can check the source code to see how it works.
 
+### Troubleshooting
+
+Please make sure to leave the 'Auto Enable On Startup' unchecked until you verify that the dark theme change works for your particular Unity configuration as expected.
+
+
 ## Sidebar
 
 The Sidebar is a configurable utility window that will keep docked on the left or the right side of the main editor window automatically. Its purpose is to host a series of clickable icons (items) each one of them having an associated one of the following functions:

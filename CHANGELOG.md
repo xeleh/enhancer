@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.4] - 2020-04-30
+
+- [Theme] Added 'Auto Enable On Startup' option (disabled by default).
+- [Theme] Auto enable won't be triggered if the last theme change got stuck.
+
 ## [0.3.3] - 2020-04-28
 
 - Fixed some issues related to settings init and leaks.

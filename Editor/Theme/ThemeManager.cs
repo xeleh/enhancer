@@ -30,12 +30,19 @@ static State state {
 	set => SessionState.SetInt(stateKey, (int)value);
 }
 
+static string incompleteKey => $"{Package.name}.ThemeManager.incomplete";
+
+static bool incomplete {
+	get => EditorPrefs.GetBool(incompleteKey, false);
+	set => EditorPrefs.SetBool(incompleteKey, value);
+}
+
 public static void OnLoad() {
 	darkEnabled = settings.darkEnabled;
 	SetDarkModeInternalFlag();
 	switch (state) {
 	case State.Startup:
-		if (settings.darkEnabled) {
+		if (settings.autoEnable && settings.darkEnabled && !incomplete) {
 			EditorApplication.delayCall += async () => {
 				// give editor enough time to complete initial load
 				await Task.Delay(500);
@@ -53,6 +60,7 @@ public static void OnLoad() {
 			ReplaceSkin();
 			ProgressWindow.Hide();
 			state = State.Done;
+			incomplete = false;
 		};
 		break;
 	}
@@ -71,6 +79,7 @@ static void SetDarkModeInternalFlag() {
 public static void SetTheme() {
 	string themeName = settings.darkEnabled ? "Dark" : "Light";
 	ProgressWindow.Init($"Setting {themeName} Theme", "Hold on...", 3);
+	incomplete = true;
 	state = State.Switching;
 	PreLoad();
 	ReplaceSheets();
