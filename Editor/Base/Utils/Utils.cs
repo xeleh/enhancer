@@ -17,6 +17,16 @@ public static Dictionary<string, T> FindObjects<T>() where T : UObject {
 	return dict;
 }
 
+public static T FindObject<T>() where T : UObject {
+	T[] objects = Resources.FindObjectsOfTypeAll<T>();
+	return objects.Length > 0 ? objects[0] : null;
+}
+
+public static UObject FindObject(Type type) {
+	UObject[] objects = Resources.FindObjectsOfTypeAll(type);
+	return objects.Length > 0 ? objects[0] : null;
+}
+
 }
 
 }

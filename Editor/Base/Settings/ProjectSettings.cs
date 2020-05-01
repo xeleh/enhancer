@@ -15,26 +15,26 @@ string assetPath;
 Dictionary<string, Setting> dict = new Dictionary<string, Setting>();
 
 internal static T GetInstance<T>(string assetPath) where T : ProjectSettings {
-	// not happy with this cleanup, there must be a better way
-	T[] zombies = Resources.FindObjectsOfTypeAll<T>();
-	foreach (var zombie in zombies) {
-		zombie.DestroyImmediate();
-	}
-	// load the .asset file
-	UObject[] objects = InternalEditorUtility.LoadSerializedFileAndForget(assetPath);
-	bool notLoaded = objects == null || objects.Length == 0 || objects[0] == null;
-	if (notLoaded) {
-		// ok, then create it
-		objects = SaveAsset<T>(ScriptableObject.CreateInstance<T>(), assetPath);
-		if (objects == null || objects.Length == 0) {
-			return null;
+	// try to find a living instance in memory
+	T instance = Utils.FindObject<T>();
+	// nothing? ok, then try to load the asset from a file
+	if (instance == null) {
+		UObject[] objects = InternalEditorUtility.LoadSerializedFileAndForget(assetPath);
+		bool notLoaded = objects == null || objects.Length == 0 || objects[0] == null;
+		// still nothing? ok, then create and save the asset
+		if (notLoaded) {
+			objects = SaveAsset<T>(ScriptableObject.CreateInstance<T>(), assetPath);
+			// check if something is really fucked, just in case
+			if (objects == null || objects.Length == 0) {
+				return null;
+			}
+			instance = objects[0] as T;
+			instance.assetPath = assetPath;
+			instance.hideFlags = HideFlags.HideAndDontSave; 
 		}
 	}
-	// setup the instance
-	T instance = objects[0] as T;
+	// setup non serialized internal stuff
 	if (instance != null) {
-		instance.assetPath = assetPath;
-		instance.hideFlags = HideFlags.HideAndDontSave; 
 		instance.dict = SettingParser.Parse(typeof(T), instance);
 		instance.settings = instance.dict.Values.ToArray();
 	}

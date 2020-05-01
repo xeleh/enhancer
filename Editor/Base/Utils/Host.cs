@@ -45,13 +45,11 @@ public static Color GetPlayModeTintColor() {
 }
 
 public static EditorWindow GetWindow(Type type) {
-	UObject[] windows = Resources.FindObjectsOfTypeAll(type);
-	return windows.Length > 0 ? windows[0] as EditorWindow: null;
+	return Utils.FindObject(type) as EditorWindow;
 }
 
 public static T GetWindow<T>() where T : EditorWindow {
-	T[] windows = Resources.FindObjectsOfTypeAll<T>();
-	return windows.Length > 0 ? windows[0] : null;
+	return Utils.FindObject<T>();
 }
 
 public static void OnReflow() {
