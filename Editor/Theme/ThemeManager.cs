@@ -37,8 +37,11 @@ static bool incomplete {
 	set => EditorPrefs.SetBool(incompleteKey, value);
 }
 
+static string darkThemeKey = "darkTheme";
+
 public static void OnLoad() {
 	darkEnabled = settings.darkEnabled;
+	EditorPrefs.SetBool(darkThemeKey, settings.darkEnabled);
 	SetDarkModeInternalFlag();
 	switch (state) {
 	case State.Startup:
