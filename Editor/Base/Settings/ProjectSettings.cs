@@ -28,13 +28,13 @@ internal static T GetInstance<T>(string assetPath) where T : ProjectSettings {
 			if (objects == null || objects.Length == 0) {
 				return null;
 			}
-			instance = objects[0] as T;
-			instance.assetPath = assetPath;
-			instance.hideFlags = HideFlags.HideAndDontSave; 
 		}
+		instance = objects[0] as T;
+		instance.hideFlags = HideFlags.HideAndDontSave; 
 	}
 	// setup non serialized internal stuff
 	if (instance != null) {
+		instance.assetPath = assetPath;
 		instance.dict = SettingParser.Parse(typeof(T), instance);
 		instance.settings = instance.dict.Values.ToArray();
 	}
@@ -58,7 +58,7 @@ Setting IHasSettings.GetSetting(string name) {
 }
 
 void IHasSettings.Check() {
-	if (!File.Exists(assetPath)) {
+	if (assetPath != null && !File.Exists(assetPath)) {
 		this.Save();
 	}
 }
@@ -67,7 +67,9 @@ void IHasSettings.Load() {
 }
 
 void IHasSettings.Save() {
-	SaveAsset(this, assetPath);
+	if (assetPath != null) {
+		SaveAsset(this, assetPath);
+	}
 }
 
 void IHasSettings.Reset() {
