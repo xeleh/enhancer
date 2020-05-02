@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.5] - 2020-05-02
+
+- [Theme] Added EditorPrefs flag for dark theme.
+- [Theme] Added document on adapting 3rd party plugins.
+
 ## [0.3.4] - 2020-04-30
 
 - [Theme] Added 'Auto Enable On Startup' option (disabled by default).
