@@ -24,7 +24,7 @@ This feature has been tested with all Unity 2019.3.x versions and the latest Uni
 
 ### Troubleshooting
 
-After enabling the dark theme you could find a few windows (like Timeline) and 3rd party plugins still showing non darken parts. These cases are special and require [adapting the code for detecting our dark theme](Adapting).
+After enabling the dark theme you could find a few windows (like Timeline) and 3rd party plugins still showing non darken parts. These cases are special and require [adapting the code for detecting our dark theme](Adapting.md).
 
 Please make sure to leave the 'Auto Enable On Startup' unchecked until you verify that the dark theme change works for your particular Unity configuration as expected.
 
