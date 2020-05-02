@@ -14,7 +14,9 @@ Becomes:
 
 Of course, this is just a simple example. We are not considering performance or best coding practices here, but only showing that we are using EditorPrefs to enable a simple "communication" without having to create any hard dependencies between the code of those plugins and the Editor Enhancer package.
 
-A word of caution, though: in case that you update any of the adapted plugins you will have to repeat the process or just deal with merging the changes. That sounds bad, but it is not a big deal in the practice. Just as an example, adapting the Timeline package to properly work with our dark theme is just a matter of modifying a total of 9 lines of code. This is the result:
+The Unity Package Manager stores the uncompressed contents of the installed packages in the [global cache](https://docs.unity3d.com/Manual/upm-cache.html) so those are the source files to modify in order to make the changes permanent. Make sure to reopen your Unity project for the local package cache to update.
+
+A word of caution, though: in case that you update any of the adapted plugins or packages you will have to repeat the process for each new version. That sounds bad, but it is not a big deal in the practice. Just as an example, adapting the Timeline package to properly work with our dark theme is just a matter of modifying a total of 5 lines of code. This is the result:
 
 ![](https://user-images.githubusercontent.com/148356/80822781-ba6c9b80-8bdb-11ea-9673-792a1358d37f.png)
 
