@@ -1,4 +1,6 @@
 # Editor Enhancer
+[![openupm](https://img.shields.io/npm/v/com.xeleh.enhancer?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.xeleh.enhancer/)
+
 The Editor Enhancer package is a collection of utilities aimed to enhance the Unity Editor. See the [roadmap](#roadmap) section for more information on what is coming next.
 
 ### Requirements
@@ -7,12 +9,21 @@ Unity 2019.3.0 or newer.
 
 ### Installation
 
+***Via Git URL***
+
 Open the Package Manager window and follow the [instructions to install a package from a Git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html). This is the URL you need to enter:
 
 ```
 https://github.com/xeleh/enhancer.git
 ```
 
+***Via OpenUPM***
+
+The package is available on the [openupm registry](https://openupm.com/packages/com.xeleh.enhancer/). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli#openupm-cli).
+
+```
+openupm add com.xeleh.enhancer
+```
 
 ## Dark Theme
 
