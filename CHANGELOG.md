@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.6] - 2020-05-29
+
+- [Theme] Disabled dark theme feature for Unity 2019.3.15+ after Unity blocked our bypass.
+
 ## [0.3.5] - 2020-05-02
 
 - [Theme] Added EditorPrefs flag for dark theme.

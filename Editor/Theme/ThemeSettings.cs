@@ -15,6 +15,7 @@ public bool darkEnabled = false;
 public bool autoEnable = false;
 
 public override void OnGUI(Setting setting) {
+	if (!ThemeManager.supported) { return; }
 	bool guiEnabled = GUI.enabled;
 	GUI.enabled = !Application.isPlaying;
 	base.OnGUI(setting);

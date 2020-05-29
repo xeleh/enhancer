@@ -13,6 +13,11 @@ namespace XT.Enhancer {
 
 internal static class ThemeManager {
 
+static Version v2019_3_0 = new Version(2019, 3, 0);
+static Version v2019_3_14 = new Version(2019, 3, 14);
+
+public static bool supported = Host.version >= v2019_3_0 && Host.version <= v2019_3_14;
+
 static ThemeSettings settings => Package.settings.theme;
 
 public static bool darkEnabled;
@@ -40,6 +45,7 @@ static bool incomplete {
 static string darkThemeKey = "darkTheme";
 
 public static void OnLoad() {
+	if (!supported) { return; }
 	darkEnabled = settings.darkEnabled;
 	EditorPrefs.SetBool(darkThemeKey, settings.darkEnabled);
 	SetDarkModeInternalFlag();
@@ -69,7 +75,7 @@ public static void OnLoad() {
 	}
 }
 
-static 	Version v2019_3_8 = new Version(2019, 3, 8);
+static Version v2019_3_8 = new Version(2019, 3, 8);
 
 static void SetDarkModeInternalFlag() {
 	if (Host.version >= v2019_3_8) {
@@ -80,6 +86,7 @@ static void SetDarkModeInternalFlag() {
 // --------------------------------------------------------------------------------------------
 
 public static void SetTheme() {
+	if (!supported) { return; }
 	string themeName = settings.darkEnabled ? "Dark" : "Light";
 	ProgressWindow.Init($"Setting {themeName} Theme", "Hold on...", 3);
 	incomplete = true;
